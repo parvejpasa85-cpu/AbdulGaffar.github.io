@@ -1,1 +1,938 @@
 # AbdulGaffar.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Gaffar - Tutoring Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --light: #f8fafc;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.18);
+            --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp 15s infinite ease-in;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header / Hero Section */
+        .header {
+            position: relative;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 45px 40px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-1);
+            opacity: 0.06;
+            border-radius: 50%;
+            animation: rotateGradient 20s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Horizontal layout for header */
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Profile photo - LEFT SIDE */
+        .profile-photo-wrapper {
+            width: 180px;
+            height: 180px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo-border {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--gradient-1);
+            box-shadow: var(--shadow-glow);
+            animation: photoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes photoGlow {
+            0%, 100% {
+                box-shadow: 0 0 25px rgba(99, 102, 241, 0.4), 0 0 50px rgba(99, 102, 241, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 70px rgba(99, 102, 241, 0.3);
+            }
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 4px solid white;
+        }
+
+        .profile-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            border: 4px solid white;
+        }
+
+        /* Text info - RIGHT SIDE */
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 18px rgba(99, 102, 241, 0);
+            }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        /* Department tags container */
+        .department-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .header .department {
+            display: inline-block;
+            background: var(--light);
+            color: var(--dark-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 2px solid var(--light-gray);
+            white-space: nowrap;
+        }
+
+        /* Responsive: Stack vertically on mobile */
+        @media (max-width: 700px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+            }
+            .header-text {
+                text-align: center;
+            }
+            .profile-photo-wrapper {
+                width: 140px;
+                height: 140px;
+            }
+            .header {
+                padding: 30px 22px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            .department-tags {
+                justify-content: center;
+            }
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--light-gray);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .icon-purple {
+            background: #ede9fe;
+            color: #6366f1;
+        }
+        .icon-cyan {
+            background: #cffafe;
+            color: #06b6d4;
+        }
+        .icon-amber {
+            background: #fef3c7;
+            color: #f59e0b;
+        }
+        .icon-green {
+            background: #d1fae5;
+            color: #10b981;
+        }
+        .icon-rose {
+            background: #ffe4e6;
+            color: #f43f5e;
+        }
+
+        /* About Me */
+        .about-me {
+            grid-column: 1 / -1;
+        }
+
+        .about-text {
+            color: var(--dark-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Contact Info */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark-light);
+            cursor: default;
+        }
+
+        .contact-list li:hover {
+            background: #ede9fe;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-icon.whatsapp {
+            background: #dcfce7;
+            color: #25d366;
+        }
+        .contact-icon.email {
+            background: #fce7f3;
+            color: #db2777;
+        }
+        .contact-icon.location {
+            background: #fef3c7;
+            color: #f59e0b;
+        }
+
+        /* Why Me List */
+        .why-me-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .why-me-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark-light);
+        }
+
+        .why-me-list li:hover {
+            background: #ede9fe;
+            border-left-color: #8b5cf6;
+        }
+
+        .check-icon {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Locations */
+        .locations {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .location-item:hover {
+            background: #fef3c7;
+            transform: translateX(5px);
+        }
+
+        .location-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            flex-shrink: 0;
+            animation: pulse 2s infinite;
+        }
+
+        .location-time {
+            margin-left: auto;
+            background: var(--primary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Education */
+        .education-item {
+            padding: 18px 20px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            background: #cffafe;
+            border-left-color: #06b6d4;
+        }
+
+        .edu-year {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .edu-institution {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .edu-details {
+            font-size: 0.85rem;
+            color: var(--dark-light);
+            margin-top: 2px;
+        }
+
+        /* Credentials Grid */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-light);
+            transition: var(--transition);
+        }
+
+        .credential-item:hover {
+            background: #ede9fe;
+            transform: scale(1.03);
+        }
+
+        .cred-rank {
+            background: var(--gradient-1);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* Mentorship */
+        .mentorship-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .mentorship-category {
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            padding: 18px 20px;
+            transition: var(--transition);
+        }
+
+        .mentorship-category:hover {
+            background: #fce7f3;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mentorship-category h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .subject-tag {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark-light);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 2px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .subject-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Full-width cards */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--dark-light);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .footer .heart {
+            color: #ef4444;
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.3);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.3);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .card {
+                padding: 22px 16px;
+            }
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <div class="container">
+
+        <!-- Header / Hero -->
+        <header class="header">
+            <div class="header-content">
+
+                <!-- Profile Photo - LEFT SIDE -->
+                <!-- 
+                TO ADD YOUR PHOTO:
+                - Replace the src below with your image link
+                -->
+                <div class="profile-photo-wrapper">
+                    <div class="profile-photo-border">
+                        <img 
+                            class="profile-photo" 
+                            src="https://i.ibb.co.com/0bCLQtk/Abdul-Gaffar.jpg" 
+                            alt="Abdul Gaffar"
+                            id="profileImg"
+                            onerror="document.getElementById('profileImg').style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';"
+                            onload="document.getElementById('photoPlaceholder').style.display='none';"
+                        >
+                        <!-- Fallback placeholder -->
+                        <div class="profile-photo-placeholder" id="photoPlaceholder">AG</div>
+                    </div>
+                </div>
+
+                <!-- Name & Info - RIGHT SIDE -->
+                <div class="header-text">
+                    <span class="badge">📚 Tutor & Mentor</span>
+                    <h1>Abdul Gaffar</h1>
+                    <p class="subtitle">Dept of EEE — RUET</p>
+                    <div class="department-tags">
+                        <span class="department">⚡ Electrical & Electronic Engineering</span>
+                        <span class="department">🎓 Ex-Notre Damian</span>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+
+            <!-- About Me (Full Width) -->
+            <div class="card about-me full-width">
+                <div class="card-title">
+                    <span class="icon icon-purple">👋</span>
+                    About Me
+                </div>
+                <p class="about-text">
+                    I am currently a student of the <span class="highlight">Department of EEE, RUET</span>. I am from <span class="highlight">Chapainawabganj</span> district and have completed my SSC from <span class="highlight">Asian School</span> with <span class="highlight">Talent Pool Scholarship</span>. I am willing to share my academic and admission journey with anyone interested from the backgrounds mentioned below.
+                </p>
+            </div>
+
+            <!-- Contact (Left Column) -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon icon-green">📬</span>
+                    Contact
+                </div>
+                <ul class="contact-list">
+                    <li>
+                        <span class="contact-icon whatsapp">📞</span>
+                        <span><strong>01868009105</strong><br><small style="color:#25d366;">WhatsApp Available</small></span>
+                    </li>
+                    <li>
+                        <span class="contact-icon email">✉️</span>
+                        <span>parvejpasa85@gmail.com</span>
+                    </li>
+                    <li>
+                        <span class="contact-icon location">📍</span>
+                        <span>Nachole, Chapainawabganj</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Why Me (Right Column) -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon icon-amber">⭐</span>
+                    Why Me?
+                </div>
+                <ul class="why-me-list">
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><strong>Concept Building</strong> — Strong foundation in core topics</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><strong>Exam Strategy & Time Management</strong> — Proven techniques</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><strong>Friendly & Student-Focused Mentorship</strong> — Personalized approach</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><strong>Recent Admission Experience</strong> — Up-to-date insights</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><strong>Regular Assessment & Feedback</strong> — Track progress effectively</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Preferred Locations (Full Width) -->
+            <div class="card full-width">
+                <div class="card-title">
+                    <span class="icon icon-rose">📍</span>
+                    Preferred Locations
+                </div>
+                <div class="locations" style="display:flex; flex-direction:row; gap:16px; flex-wrap:wrap;">
+                    <div class="location-item" style="flex:1; min-width:200px;">
+                        <span class="location-dot"></span>
+                        <span>Nachole, Chapainawabganj</span>
+                        <span class="location-time">Till May</span>
+                    </div>
+                    <div class="location-item" style="flex:1; min-width:200px;">
+                        <span class="location-dot" style="background:#06b6d4;"></span>
+                        <span>Near RUET Area, Rajshahi</span>
+                        <span class="location-time" style="background:#06b6d4;">After May</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon icon-cyan">🎓</span>
+                    Education
+                </div>
+                <div class="education-item">
+                    <div class="edu-year">2026 – Present</div>
+                    <div class="edu-institution">Rajshahi University of Engineering & Technology</div>
+                    <div class="edu-details">Dept of EEE</div>
+                </div>
+                <div class="education-item">
+                    <div class="edu-year">2023 – 2025</div>
+                    <div class="edu-institution">Notre Dame College, Dhaka</div>
+                    <div class="edu-details">HSC — Dhaka Board · General Scholarship · <strong>GPA-5</strong> (PCM: 94.83%)</div>
+                </div>
+            </div>
+
+            <!-- Credentials -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon icon-purple">🏆</span>
+                    Admission Credentials
+                </div>
+                <div class="credentials-grid">
+                    <div class="credential-item">
+                        <span>RUET</span>
+                        <span class="cred-rank">821st</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>KUET</span>
+                        <span class="cred-rank">1451st</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>CUET</span>
+                        <span class="cred-rank">515th</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>DU (A)</span>
+                        <span class="cred-rank">2559th</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>SUST</span>
+                        <span class="cred-rank">532nd</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>RU (C)</span>
+                        <span class="cred-rank">229th</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>JU (A)</span>
+                        <span class="cred-rank">165th</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>JnU (A)</span>
+                        <span class="cred-rank">272nd</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>KU (A)</span>
+                        <span class="cred-rank">559th</span>
+                    </div>
+                    <div class="credential-item">
+                        <span>CU (A)</span>
+                        <span class="cred-rank">1219th</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentorship Preferences (Full Width) -->
+            <div class="card full-width">
+                <div class="card-title">
+                    <span class="icon icon-green">📖</span>
+                    Mentorship Preferences
+                </div>
+                <div class="mentorship-categories">
+                    <div class="mentorship-category">
+                        <h4>🎯 SSC (Class 9–10)</h4>
+                        <div class="subjects">
+                            <span class="subject-tag">Physics</span>
+                            <span class="subject-tag">Chemistry</span>
+                            <span class="subject-tag">Mathematics</span>
+                            <span class="subject-tag">ICT</span>
+                        </div>
+                    </div>
+                    <div class="mentorship-category">
+                        <h4>🎯 HSC (Class 11–12)</h4>
+                        <div class="subjects">
+                            <span class="subject-tag">Physics</span>
+                            <span class="subject-tag">Maths</span>
+                            <span class="subject-tag">ICT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Made with <span class="heart">❤️</span> by Abdul Gaffar · Ready to help you succeed!</p>
+        </div>
+
+    </div>
+
+    <!-- Particles Script -->
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#f59e0b', '#10b981', '#f43f5e'];
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 8 + 4;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 12 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+
+</body>
+</html>
